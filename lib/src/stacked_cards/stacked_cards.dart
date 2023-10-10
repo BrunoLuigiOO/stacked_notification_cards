@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../model/notification_card.dart';
-import '../notification_tile/slide_button.dart';
 import 'animated_offset_list.dart';
 import 'expanded_list.dart';
 import 'last_notification_card.dart';
@@ -29,7 +28,7 @@ class StackedCards extends StatelessWidget {
   final Widget clear;
   final OnTapSlidButtonCallback onTapViewCallback;
   final OnTapSlidButtonCallback onTapClearCallback;
-  final Widget clearAllStacked;
+  // final Widget clearAllStacked;
 
   StackedCards({
     Key? key,
@@ -50,21 +49,21 @@ class StackedCards extends StatelessWidget {
     required this.view,
     required this.onTapClearCallback,
     required this.onTapViewCallback,
-    required this.clearAllStacked,
+    // required this.clearAllStacked,
   }) : super(key: key);
 
   /// This method gives the bottom padding that is used
   /// for 'Clear All' bottom when stacked cards are slid over
-  double _getSlidButtonPadding() {
-    final length = notificationCards.length;
-    if (length == 1) {
-      return padding;
-    } else if (length == 2) {
-      return spacing + padding;
-    } else {
-      return (2 * spacing) + padding;
-    }
-  }
+  // double _getSlidButtonPadding() {
+  //   final length = notificationCards.length;
+  //   if (length == 1) {
+  //     return padding;
+  //   } else if (length == 2) {
+  //     return spacing + padding;
+  //   } else {
+  //     return (2 * spacing) + padding;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,34 +73,35 @@ class StackedCards extends StatelessWidget {
     /// Wrapped in [Slidable], this will help to slide when cards are stacked.
     return Slidable(
       key: ValueKey('0'),
-      endActionPane: ActionPane(
-        extentRatio: 0.25,
-        openThreshold: 0.25,
-        closeThreshold: 0.5,
-        motion: BehindMotion(),
-        dismissible: DismissiblePane(
-          onDismissed: () => onTapClearAll,
-        ),
-        children: [
-          SlideButton(
-            padding: EdgeInsets.fromLTRB(
-              0,
-              0,
-              padding,
-              _getSlidButtonPadding(),
-            ),
-            color: containerColor,
-            height: containerHeight,
-            leftCornerRadius: cornerRadius,
-            rightCornerRadius: cornerRadius,
-            boxShadow: boxShadow,
-            onTap: (context) async {
-              onTapClearAll();
-            },
-            child: clearAllStacked,
-          )
-        ],
-      ),
+      enabled: false,
+      // endActionPane: ActionPane(
+      //   extentRatio: 0.25,
+      //   openThreshold: 0.25,
+      //   closeThreshold: 0.5,
+      //   motion: BehindMotion(),
+      //   dismissible: DismissiblePane(
+      //     onDismissed: () => onTapClearAll,
+      //   ),
+      //   children: [
+      //     SlideButton(
+      //       padding: EdgeInsets.fromLTRB(
+      //         0,
+      //         0,
+      //         padding,
+      //         _getSlidButtonPadding(),
+      //       ),
+      //       color: containerColor,
+      //       height: containerHeight,
+      //       leftCornerRadius: cornerRadius,
+      //       rightCornerRadius: cornerRadius,
+      //       boxShadow: boxShadow,
+      //       onTap: (context) async {
+      //         onTapClearAll();
+      //       },
+      //       child: clearAllStacked,
+      //     ),
+      //   ],
+      // ),
       child: Stack(
         children: [
           OffsetSpacer(

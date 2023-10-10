@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
 class NotificationCard {
-  final DateTime date;
-  final Widget leading;
-  final String title;
-  final String subtitle;
+  final Key key;
+  final Widget? title;
+  final Widget? subtitle;
+  final Widget mainInfo;
+  final Widget? secondaryInfo;
+  final Widget? trailing;
+  final Function()? onTap;
 
   const NotificationCard({
-    required this.date,
-    required this.leading,
-    required this.title,
-    required this.subtitle,
+    required this.key,
+    this.title,
+    this.subtitle,
+    required this.mainInfo,
+    this.secondaryInfo,
+    this.trailing,
+    this.onTap,
   });
 }

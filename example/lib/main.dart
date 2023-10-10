@@ -24,61 +24,95 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<NotificationCard> _listOfNotification = [
-    NotificationCard(
-      date: DateTime.now(),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 1',
-      subtitle: 'We believe in the power of mobile computing.',
-    ),
-    NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 4),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 2',
-      subtitle: 'We believe in the power of mobile computing.',
-    ),
-    NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 10),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 3',
-      subtitle: 'We believe in the power of mobile computing.',
-    ),
-    NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 30),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 4',
-      subtitle: 'We believe in the power of mobile computing.',
-    ),
-    NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 44),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 5',
-      subtitle: 'We believe in the power of mobile computing.',
-    ),
-  ];
+  static const kBlackColor = Color(0xFF240106);
+  List<NotificationCard> _listOfNotification = [];
+
+  @override
+  void initState() {
+    super.initState();
+    for (var i = 0; i < 5; i++) {
+      _listOfNotification.add(
+        NotificationCard(
+          key: UniqueKey(),
+          title: Text(
+            'Reimbursement',
+            maxLines: 1,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              color: kBlackColor.withOpacity(0.4),
+            ),
+          ),
+          subtitle: Text(
+            'Today',
+            maxLines: 1,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              color: kBlackColor.withOpacity(0.4),
+            ),
+          ),
+          mainInfo: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 4.0),
+                child: Text(
+                  '\$',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 16.0,
+                    color: kBlackColor,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: '50',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 32.0,
+                      color: kBlackColor,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '.99',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 16.0,
+                          color: kBlackColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          secondaryInfo: Text(
+            'Request in progress',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.bold,
+              color: kBlackColor.withOpacity(0.4),
+            ),
+          ),
+          trailing: Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Text(
+              'DETAILS',
+              style: const TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 12.0,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+          onTap: () {},
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

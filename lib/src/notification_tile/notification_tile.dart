@@ -1,37 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-import '../constants.dart';
+import 'package:stacked_notification_cards/src/model/notification_card.dart';
 
 /// This widget is responsible for structuring the [NotificationCard].
 class NotificationTile extends StatelessWidget {
-  final String cardTitle;
-  final DateTime date;
-  final String title;
-  final String subtitle;
-  final EdgeInsets? padding;
   final double height;
   final double spacing;
   final double cornerRadius;
   final Color color;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
+  final NotificationCard notificationCard;
+  final EdgeInsets? padding;
   final List<BoxShadow>? boxShadow;
 
   const NotificationTile({
     Key? key,
-    required this.title,
-    required this.cardTitle,
-    required this.date,
-    required this.subtitle,
     required this.height,
     required this.cornerRadius,
     required this.color,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
-    required this.boxShadow,
-    this.spacing = 0,
+    required this.spacing,
+    required this.notificationCard,
     this.padding,
+    this.boxShadow,
   }) : super(key: key);
 
   @override
@@ -39,6 +27,7 @@ class NotificationTile extends StatelessWidget {
     return Container(
       margin: padding,
       height: height,
+      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(cornerRadius),
@@ -46,46 +35,34 @@ class NotificationTile extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    cardTitle,
-                    style: kCardTopTextStyle,
-                    maxLines: 1,
-                  ),
+          const SizedBox(height: 16.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: notificationCard.title ?? const SizedBox.shrink(),
+              ),
+              notificationCard.subtitle ?? const SizedBox.shrink()
+            ],
+          ),
+          const SizedBox(height: 8.0),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    notificationCard.mainInfo,
+                    if (notificationCard.secondaryInfo != null)
+                      notificationCard.secondaryInfo!,
+                  ],
                 ),
-                Text(
-                  'Today ${DateFormat('h:mm a').format(date)}',
-                  style: kCardTopTextStyle,
-                )
-              ],
-            ),
+              ),
+              if (notificationCard.trailing != null) notificationCard.trailing!,
+            ],
           ),
-          SizedBox(
-            height: 17,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.account_circle,
-              size: 48,
-            ),
-            title: Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: titleTextStyle,
-            ),
-            subtitle: Text(
-              subtitle,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: subtitleTextStyle,
-            ),
-          ),
+          const SizedBox(height: 16.0),
+          const Divider(height: 0.0),
         ],
       ),
     );

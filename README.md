@@ -1,8 +1,9 @@
 # stacked_notification_cards
 
-A Flutter implementation of iOS style stacked notifications. 
+A Flutter implementation of iOS style stacked notifications.
 
 ## Features
+
 * Given notifications can be stacked one upon the other (iOS style)
 * Notifications can be expanded with fan animation.
 * Individual notification card can slide either left or right
@@ -25,7 +26,6 @@ Add then following import:
 ```dart
 import 'package:stacked_notification_cards/stacked_notification_cards.dart';
 ```
-
 
 ## Getting Started
 
@@ -79,10 +79,6 @@ Example:
             ),
 
 ```
-## Demo
-<p align="center">
-<img src="https://raw.githubusercontent.com/OakTree-Apps/stacked_notification_cards/main/assets/demo_record.gif" width="300"/>
-</p>
 
 ## Contributions
 
@@ -90,7 +86,6 @@ Feel free to contribute to this project.
 
 * If you find a bug or want have a new feature request, please file an [issue][issue].
 * If you fixed a bug or implemented a feature, please send a [pull request][pr].
-
 
 <!-- Links -->
 [issue]: https://github.com/oakTreeapps/stacked_notification_cards/issues

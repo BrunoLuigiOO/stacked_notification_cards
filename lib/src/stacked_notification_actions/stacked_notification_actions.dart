@@ -9,8 +9,8 @@ class StackedNotificationActions extends StatelessWidget {
   final double spacing;
   final Widget showLessAction;
   final Widget title;
-  final Widget clearAllNotificationsAction;
-  final VoidCallback clearAll;
+  // final Widget clearAllNotificationsAction;
+  // final VoidCallback clearAll;
   final int notificationCount;
 
   const StackedNotificationActions({
@@ -20,8 +20,8 @@ class StackedNotificationActions extends StatelessWidget {
     required this.spacing,
     required this.title,
     required this.showLessAction,
-    required this.clearAllNotificationsAction,
-    required this.clearAll,
+    // required this.clearAllNotificationsAction,
+    // required this.clearAll,
     required this.notificationCount,
   }) : super(key: key);
 
@@ -44,11 +44,7 @@ class StackedNotificationActions extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          title,
-          Expanded(
-            child: SizedBox(),
-          ),
-          // showLess button
+          Expanded(child: title),
           GestureDetector(
             onTap: () {
               controller.reverse();
@@ -61,17 +57,6 @@ class StackedNotificationActions extends StatelessWidget {
               ),
             ),
           ),
-          // clear all button
-          GestureDetector(
-            onTap: clearAll,
-            child: Visibility(
-              visible: notificationCount > 1,
-              child: Opacity(
-                opacity: opacity.value,
-                child: clearAllNotificationsAction,
-              ),
-            ),
-          )
         ],
       ),
     );

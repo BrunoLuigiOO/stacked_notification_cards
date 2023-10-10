@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:intl/intl.dart';
+import 'package:stacked_notification_cards/src/constants.dart';
 
-import '../constants.dart';
 import '../model/notification_card.dart';
 
 /// [LastNotificationCard] is the topmost card on the stack
@@ -56,37 +55,6 @@ class LastNotificationCard extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Positioned(
-                top: 16,
-                left: 16,
-                right: 16,
-                child: Opacity(
-                  opacity: Tween(begin: 0.0, end: 1.0)
-                      .animate(
-                        CurvedAnimation(
-                          parent: controller,
-                          curve: Interval(0.2, 0.3),
-                        ),
-                      )
-                      .value,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          notificationCardTitle,
-                          style: kCardTopTextStyle,
-                          maxLines: 1,
-                        ),
-                      ),
-                      Text(
-                        'Today ${DateFormat('h:mm a').format(notification.date)}',
-                        style: kCardTopTextStyle,
-                      )
-                    ],
-                  ),
-                ),
-              ),
               Transform.translate(
                 offset: Tween<Offset>(
                   begin: Offset(0, 15),
@@ -102,22 +70,8 @@ class LastNotificationCard extends StatelessWidget {
                 child: Visibility(
                   visible: controller.value <= 0.2,
                   child: ListTile(
-                    leading: Icon(
-                      Icons.account_circle,
-                      size: 48,
-                    ),
-                    title: Text(
-                      notification.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: titleTextStyle,
-                    ),
-                    subtitle: Text(
-                      notification.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subtitleTextStyle,
-                    ),
+                    title: notification.mainInfo,
+                    subtitle: notification.secondaryInfo,
                   ),
                 ),
               ),
@@ -136,27 +90,14 @@ class LastNotificationCard extends StatelessWidget {
                 child: Visibility(
                   visible: controller.value >= 0.2,
                   child: ListTile(
-                    leading: Icon(
-                      Icons.account_circle,
-                      size: 48,
-                    ),
-                    title: Text(
-                      notification.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: titleTextStyle,
-                    ),
-                    subtitle: Text(
-                      notification.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subtitleTextStyle,
-                    ),
+                    title: notification.mainInfo,
+                    subtitle: notification.secondaryInfo,
                   ),
                 ),
               ),
               Positioned(
-                bottom: 16,
+                right: 0.0,
+                bottom: 8.0,
                 child: Opacity(
                   opacity: Tween(begin: 1.0, end: 0.0)
                       .animate(
@@ -172,8 +113,13 @@ class LastNotificationCard extends StatelessWidget {
                       vertical: 4.0,
                     ),
                     child: Text(
-                      '${totalCount - 1} more notification',
-                      style: TextStyle(fontSize: 16),
+                      '+ ${totalCount - 1}',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: kUnselectedColor.shade800,
+                      ),
                     ),
                   ),
                 ),

@@ -62,8 +62,8 @@ class StackedNotificationCards extends StatelessWidget {
   /// Used to clear the notification.
   final Widget cardClearButton;
 
-  /// Callback when tapped on cardViewButton widget after sliding card. This callback 
-  /// is used to show more details about the notification 
+  /// Callback when tapped on cardViewButton widget after sliding card. This callback
+  /// is used to show more details about the notification
   final OnTapSlidButtonCallback onTapViewCallback;
 
   /// Callback when tapped on cardClearButton widget after sliding card. This callback
@@ -107,8 +107,8 @@ class StackedNotificationCards extends StatelessWidget {
         subtitleTextStyle: subtitleTextStyle,
         boxShadow: boxShadow,
         onTapClearAll: onTapClearAll,
-        clearAllNotificationsAction: clearAllNotificationsAction,
-        clearAllStacked: clearAllStacked,
+        // clearAllNotificationsAction: clearAllNotificationsAction,
+        // clearAllStacked: clearAllStacked,
         clear: cardClearButton,
         view: cardViewButton,
         onTapViewCallback: onTapViewCallback,

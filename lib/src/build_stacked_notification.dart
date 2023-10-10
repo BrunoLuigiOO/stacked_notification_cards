@@ -22,8 +22,6 @@ class BuildStackedNotification extends StatefulWidget {
   final OnTapSlidButtonCallback onTapClearCallback;
   final Widget headerTitle;
   final Widget showLessAction;
-  final Widget clearAllNotificationsAction;
-  final Widget clearAllStacked;
 
   BuildStackedNotification({
     Key? key,
@@ -42,8 +40,6 @@ class BuildStackedNotification extends StatefulWidget {
     required this.onTapClearCallback,
     required this.onTapViewCallback,
     required this.headerTitle,
-    required this.clearAllNotificationsAction,
-    required this.clearAllStacked,
     required this.showLessAction,
   }) : super(key: key);
 
@@ -56,7 +52,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
-  final double _containerHeight = 140;
+  final double _containerHeight = 140.0;
 
   @override
   void initState() {
@@ -85,11 +81,6 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
     final onTapClearCallback = widget.onTapClearCallback;
     final headerTitle = widget.headerTitle;
     final showLessAction = widget.showLessAction;
-    final clearAllNotificationsAction = widget.clearAllNotificationsAction;
-    final clearAllStacked = widget.clearAllStacked;
-
-    /// needs to sort to show the list in ascending date order
-    notificationCards.sort((a, b) => a.date.compareTo(b.date));
 
     return AnimatedBuilder(
       animation: _animationController,
@@ -104,15 +95,12 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
             title: headerTitle,
             showLessAction: showLessAction,
             notificationCount: notificationCards.length,
-            clearAllNotificationsAction: clearAllNotificationsAction,
-            clearAll: onTapClearAll,
           ),
           StackedCards(
             onTapClearCallback: onTapClearCallback,
             onTapViewCallback: onTapViewCallback,
             clear: clear,
             view: view,
-            clearAllStacked: clearAllStacked,
             key: ValueKey('CollapsedCards'),
             notificationCardTitle: notificationCardTitle,
             controller: _animationController,

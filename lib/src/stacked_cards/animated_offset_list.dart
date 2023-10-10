@@ -146,8 +146,8 @@ class AnimatedOffsetList extends StatelessWidget {
         key: ValueKey('AnimatedOffsetList'),
         children: [
           ...notificationCards.map(
-            (notification) {
-              final index = notificationCards.indexOf(notification);
+            (notificationCard) {
+              final index = notificationCards.indexOf(notificationCard);
               return Transform.translate(
                 offset: _tileOffset(index),
                 child: Transform.scale(
@@ -158,15 +158,11 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: NotificationTile(
-                        cardTitle: notificationCardTitle,
-                        date: notification.date,
-                        title: notification.title,
-                        subtitle: notification.subtitle,
                         height: height,
-                        color: tileColor,
                         cornerRadius: cornerRadius,
-                        titleTextStyle: titleTextStyle,
-                        subtitleTextStyle: subtitleTextStyle,
+                        color: tileColor,
+                        spacing: spacing,
+                        notificationCard: notificationCard,
                         boxShadow: boxShadow,
                         padding: EdgeInsets.symmetric(
                           horizontal: padding,
