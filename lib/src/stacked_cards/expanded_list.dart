@@ -114,7 +114,6 @@ class ExpandedList extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: tileColor,
                         borderRadius: BorderRadius.circular(cornerRadius),
-                        boxShadow: boxShadow,
                       ),
                       child: NotificationTile(
                         height: containerHeight,

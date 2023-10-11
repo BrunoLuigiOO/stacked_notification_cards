@@ -62,7 +62,6 @@ class NotificationTile extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16.0),
-          const Divider(height: 0.0),
         ],
       ),
     );

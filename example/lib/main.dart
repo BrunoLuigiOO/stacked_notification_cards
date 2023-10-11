@@ -131,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.25),
                   blurRadius: 2.0,
+                  offset: Offset(0, 2),
                 )
               ],
               notificationCards: [..._listOfNotification],
