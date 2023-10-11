@@ -133,10 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   blurRadius: 2.0,
                 )
               ],
-              notificationCardTitle: 'Message',
               notificationCards: [..._listOfNotification],
               cardColor: Color(0xFFF1F1F1),
-              padding: 16,
+              padding: 16.0,
               actionTitle: Text(
                 'Notifications',
                 style: TextStyle(
@@ -152,24 +151,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.deepPurple,
                 ),
               ),
-              onTapClearAll: () {
-                setState(() {
-                  _listOfNotification.clear();
-                });
-              },
-              clearAllNotificationsAction: Icon(Icons.close),
-              clearAllStacked: Text('Clear All'),
-              cardClearButton: Text('clear'),
-              cardViewButton: Text('view'),
-              onTapClearCallback: (index) {
-                print(index);
-                setState(() {
-                  _listOfNotification.removeAt(index);
-                });
-              },
-              onTapViewCallback: (index) {
-                print(index);
-              },
             ),
           ],
         ),

@@ -3,7 +3,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../model/notification_card.dart';
 import '../notification_tile/notification_tile.dart';
-import '../notification_tile/slide_button.dart';
 
 typedef void OnTapSlidButtonCallback(int index);
 
@@ -19,14 +18,7 @@ class ExpandedList extends StatelessWidget {
   final double containerHeight;
   final Color tileColor;
   final double cornerRadius;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
   final List<BoxShadow>? boxShadow;
-  final Widget view;
-  final Widget clear;
-  final OnTapSlidButtonCallback onTapViewCallback;
-  final OnTapSlidButtonCallback onTapClearCallback;
 
   const ExpandedList({
     Key? key,
@@ -38,14 +30,7 @@ class ExpandedList extends StatelessWidget {
     required this.cornerRadius,
     required this.tileColor,
     required this.tilePadding,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
     required this.boxShadow,
-    required this.clear,
-    required this.view,
-    required this.onTapClearCallback,
-    required this.onTapViewCallback,
     required this.endPadding,
   }) : super(key: key);
 
@@ -115,12 +100,8 @@ class ExpandedList extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: endPadding),
                   child: BuildWithAnimation(
                     key: notificationCard.key,
-                    onTapView: onTapViewCallback,
-                    view: view,
-                    clear: clear,
                     containerHeight: containerHeight,
                     cornerRadius: cornerRadius,
-                    onTapClear: onTapClearCallback,
                     spacing: _getSpacing(index, spacing),
                     boxShadow: boxShadow,
                     index: index,
@@ -160,32 +141,24 @@ class BuildWithAnimation extends StatefulWidget {
   final Widget child;
   final double cornerRadius;
   final double containerHeight;
-  final Widget clear;
-  final OnTapSlidButtonCallback onTapClear;
-  final OnTapSlidButtonCallback onTapView;
   final int index;
   final List<BoxShadow>? boxShadow;
   final Color tileColor;
   final double endPadding;
   final double spacing;
   final double tilePadding;
-  final Widget view;
 
   const BuildWithAnimation({
     Key? key,
     required this.child,
     required this.cornerRadius,
     required this.containerHeight,
-    required this.clear,
-    required this.onTapClear,
     required this.index,
     required this.boxShadow,
     required this.tileColor,
     required this.endPadding,
     required this.spacing,
     required this.tilePadding,
-    required this.onTapView,
-    required this.view,
   }) : super(key: key);
 
   @override
@@ -217,55 +190,7 @@ class _BuildWithAnimationState extends State<BuildWithAnimation>
         child: SizeTransition(
           sizeFactor:
               Tween<double>(begin: 1.0, end: 0.0).animate(_animationController),
-          child: Slidable(
-            key: UniqueKey(),
-            enabled: false,
-            endActionPane: ActionPane(
-              motion: BehindMotion(),
-              dismissible: DismissiblePane(
-                  onDismissed: () => widget.onTapClear(widget.index)),
-              children: [
-                SlideButton(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    widget.spacing,
-                    widget.tilePadding,
-                    widget.endPadding,
-                  ),
-                  color: widget.tileColor,
-                  boxShadow: widget.boxShadow,
-                  height: widget.containerHeight,
-                  child: widget.view,
-                  onTap: (context) async {
-                    Slidable.of(context)?.close();
-                    widget.onTapView(widget.index);
-                  },
-                  leftCornerRadius: widget.cornerRadius,
-                  rightCornerRadius: widget.cornerRadius,
-                ),
-                SlideButton(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    widget.spacing,
-                    widget.tilePadding,
-                    widget.endPadding,
-                  ),
-                  color: widget.tileColor,
-                  boxShadow: widget.boxShadow,
-                  height: widget.containerHeight,
-                  child: widget.clear,
-                  onTap: (context) {
-                    _animationController.forward().then(
-                          (value) => widget.onTapClear(widget.index),
-                        );
-                  },
-                  rightCornerRadius: widget.cornerRadius,
-                  leftCornerRadius: widget.cornerRadius,
-                ),
-              ],
-            ),
-            child: widget.child,
-          ),
+          child: widget.child,
         ),
       ),
     );

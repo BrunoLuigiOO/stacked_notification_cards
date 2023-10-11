@@ -13,9 +13,6 @@ class LastNotificationCard extends StatelessWidget {
   final double cornerRadius;
   final Color color;
   final double height;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
   final List<BoxShadow>? boxShadow;
   final double padding;
 
@@ -27,9 +24,6 @@ class LastNotificationCard extends StatelessWidget {
     required this.color,
     required this.cornerRadius,
     required this.height,
-    required this.notificationCardTitle,
-    required this.subtitleTextStyle,
-    required this.titleTextStyle,
     required this.boxShadow,
     required this.padding,
   }) : super(key: key);

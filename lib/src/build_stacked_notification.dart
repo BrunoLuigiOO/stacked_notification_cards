@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'stacked_cards/stacked_cards.dart';
-import 'stacked_cards/expanded_list.dart';
 
 import 'stacked_notification_actions/stacked_notification_actions.dart';
 import 'model/notification_card.dart';
@@ -11,15 +10,7 @@ class BuildStackedNotification extends StatefulWidget {
   final double cornerRadius;
   final double spacing;
   final double padding;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
   final List<BoxShadow>? boxShadow;
-  final VoidCallback onTapClearAll;
-  final Widget view;
-  final Widget clear;
-  final OnTapSlidButtonCallback onTapViewCallback;
-  final OnTapSlidButtonCallback onTapClearCallback;
   final Widget headerTitle;
   final Widget showLessAction;
 
@@ -30,15 +21,7 @@ class BuildStackedNotification extends StatefulWidget {
     required this.cornerRadius,
     required this.spacing,
     required this.padding,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
     required this.boxShadow,
-    required this.onTapClearAll,
-    required this.clear,
-    required this.view,
-    required this.onTapClearCallback,
-    required this.onTapViewCallback,
     required this.headerTitle,
     required this.showLessAction,
   }) : super(key: key);
@@ -70,15 +53,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
     final tileColor = widget.tileColor;
     final cornerRadius = widget.cornerRadius;
     final padding = widget.padding;
-    final notificationCardTitle = widget.notificationCardTitle;
-    final titleStyle = widget.titleTextStyle;
-    final subtitleStyle = widget.subtitleTextStyle;
     final boxShadow = widget.boxShadow;
-    final onTapClearAll = widget.onTapClearAll;
-    final view = widget.view;
-    final clear = widget.clear;
-    final onTapViewCallback = widget.onTapViewCallback;
-    final onTapClearCallback = widget.onTapClearCallback;
     final headerTitle = widget.headerTitle;
     final showLessAction = widget.showLessAction;
 
@@ -97,12 +72,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
             notificationCount: notificationCards.length,
           ),
           StackedCards(
-            onTapClearCallback: onTapClearCallback,
-            onTapViewCallback: onTapViewCallback,
-            clear: clear,
-            view: view,
             key: ValueKey('CollapsedCards'),
-            notificationCardTitle: notificationCardTitle,
             controller: _animationController,
             notificationCards: notificationCards,
             containerHeight: _containerHeight,
@@ -111,10 +81,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
             containerColor: tileColor,
             cornerRadius: cornerRadius,
             padding: padding,
-            titleTextStyle: titleStyle,
-            subtitleTextStyle: subtitleStyle,
             boxShadow: boxShadow,
-            onTapClearAll: onTapClearAll,
           ),
         ],
       ),

@@ -19,16 +19,7 @@ class StackedCards extends StatelessWidget {
   final Color containerColor;
   final double cornerRadius;
   final double padding;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
   final List<BoxShadow>? boxShadow;
-  final VoidCallback onTapClearAll;
-  final Widget view;
-  final Widget clear;
-  final OnTapSlidButtonCallback onTapViewCallback;
-  final OnTapSlidButtonCallback onTapClearCallback;
-  // final Widget clearAllStacked;
 
   StackedCards({
     Key? key,
@@ -40,16 +31,7 @@ class StackedCards extends StatelessWidget {
     required this.containerColor,
     required this.cornerRadius,
     required this.padding,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
     required this.boxShadow,
-    required this.onTapClearAll,
-    required this.clear,
-    required this.view,
-    required this.onTapClearCallback,
-    required this.onTapViewCallback,
-    // required this.clearAllStacked,
   }) : super(key: key);
 
   /// This method gives the bottom padding that is used
@@ -112,7 +94,6 @@ class StackedCards extends StatelessWidget {
             padding: padding,
           ),
           AnimatedOffsetList(
-            notificationCardTitle: notificationCardTitle,
             padding: padding,
             controller: controller,
             interval: Interval(0.4, 0.8),
@@ -121,26 +102,20 @@ class StackedCards extends StatelessWidget {
             spacing: maxSpacing,
             cornerRadius: cornerRadius,
             tileColor: containerColor,
-            titleTextStyle: titleTextStyle,
-            subtitleTextStyle: subtitleTextStyle,
             boxShadow: boxShadow,
             opacityInterval: Interval(0.4, 0.6),
           ),
           LastNotificationCard(
-            notificationCardTitle: notificationCardTitle,
             controller: controller,
             notification: lastNotification,
             totalCount: notificationCards.length,
             height: containerHeight,
             color: containerColor,
             cornerRadius: cornerRadius,
-            titleTextStyle: titleTextStyle,
-            subtitleTextStyle: subtitleTextStyle,
             boxShadow: boxShadow,
             padding: padding,
           ),
           ExpandedList(
-            notificationCardTitle: notificationCardTitle,
             controller: controller,
             containerHeight: containerHeight,
             spacing: spacing,
@@ -149,14 +124,8 @@ class StackedCards extends StatelessWidget {
             tileColor: containerColor,
             cornerRadius: cornerRadius,
             tilePadding: padding,
-            titleTextStyle: titleTextStyle,
-            subtitleTextStyle: subtitleTextStyle,
             boxShadow: boxShadow,
-            clear: clear,
-            view: view,
             endPadding: padding,
-            onTapViewCallback: onTapViewCallback,
-            onTapClearCallback: onTapClearCallback,
           ),
         ],
       ),

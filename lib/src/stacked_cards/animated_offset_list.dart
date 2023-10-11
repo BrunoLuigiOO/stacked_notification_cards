@@ -14,12 +14,8 @@ class AnimatedOffsetList extends StatelessWidget {
   final double spacing;
   final Color tileColor;
   final double cornerRadius;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
   final List<BoxShadow>? boxShadow;
   final double padding;
-
   final Interval opacityInterval;
 
   const AnimatedOffsetList({
@@ -31,9 +27,6 @@ class AnimatedOffsetList extends StatelessWidget {
     required this.spacing,
     required this.cornerRadius,
     required this.tileColor,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
     required this.boxShadow,
     required this.opacityInterval,
     required this.padding,

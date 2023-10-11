@@ -13,16 +13,8 @@ class BaseStructure extends StatelessWidget {
       body: StackedNotificationCards(
         cardColor: Colors.white,
         notificationCards: list,
-        notificationCardTitle: 'Message',
-        onTapClearAll: () {},
-        clearAllStacked: Text('Clear All'),
-        clearAllNotificationsAction: Icon(Icons.close),
-        cardClearButton: Text('clear'),
-        cardViewButton: Text('view'),
         showLessAction: Text(''),
         actionTitle: Text(''),
-        onTapClearCallback: (index) {},
-        onTapViewCallback: (index) {},
       ),
     ));
   }
