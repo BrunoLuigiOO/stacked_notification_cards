@@ -27,42 +27,53 @@ class NotificationTile extends StatelessWidget {
     return Container(
       margin: padding,
       height: height,
-      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(cornerRadius),
         boxShadow: boxShadow,
       ),
-      child: Column(
-        children: [
-          const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: notificationCard.title ?? const SizedBox.shrink(),
-              ),
-              notificationCard.subtitle ?? const SizedBox.shrink()
-            ],
-          ),
-          const SizedBox(height: 8.0),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(cornerRadius),
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: notificationCard.onTap,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 16.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    notificationCard.mainInfo,
-                    if (notificationCard.secondaryInfo != null)
-                      notificationCard.secondaryInfo!,
+                    Expanded(
+                      child: notificationCard.title ?? const SizedBox.shrink(),
+                    ),
+                    notificationCard.subtitle ?? const SizedBox.shrink()
                   ],
                 ),
-              ),
-              if (notificationCard.trailing != null) notificationCard.trailing!,
-            ],
+                const SizedBox(height: 8.0),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          notificationCard.mainInfo,
+                          if (notificationCard.secondaryInfo != null)
+                            notificationCard.secondaryInfo!,
+                        ],
+                      ),
+                    ),
+                    if (notificationCard.trailing != null)
+                      notificationCard.trailing!,
+                  ],
+                ),
+                const SizedBox(height: 16.0),
+              ],
+            ),
           ),
-          const SizedBox(height: 16.0),
-        ],
+        ),
       ),
     );
   }
