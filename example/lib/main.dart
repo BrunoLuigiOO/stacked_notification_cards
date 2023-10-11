@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: RichText(
                   text: TextSpan(
-                    text: '50',
+                    text: (5 * i).toString(),
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 32.0,

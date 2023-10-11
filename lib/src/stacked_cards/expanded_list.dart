@@ -87,13 +87,14 @@ class ExpandedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final reversedList = notificationCards.reversed.toList();
     return Visibility(
-      visible: _getListVisibility(notificationCards.length),
+      visible: _getListVisibility(reversedList.length),
       child: SlidableAutoCloseBehavior(
         child: Column(
           key: ValueKey('ExpandedList'),
           children: [
-            ...notificationCards.map(
+            ...reversedList.map(
               (notificationCard) {
                 final index = notificationCards.indexOf(notificationCard);
                 return Padding(

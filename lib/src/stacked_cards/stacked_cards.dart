@@ -50,7 +50,7 @@ class StackedCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// this notification will be shown in [LastNotificationCard]
-    final lastNotification = notificationCards.first;
+    final lastNotification = notificationCards.last;
 
     /// Wrapped in [Slidable], this will help to slide when cards are stacked.
     return Slidable(
