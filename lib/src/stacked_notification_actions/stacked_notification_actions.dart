@@ -9,8 +9,6 @@ class StackedNotificationActions extends StatelessWidget {
   final double spacing;
   final Widget showLessAction;
   final Widget title;
-  // final Widget clearAllNotificationsAction;
-  // final VoidCallback clearAll;
   final int notificationCount;
 
   const StackedNotificationActions({
@@ -20,8 +18,6 @@ class StackedNotificationActions extends StatelessWidget {
     required this.spacing,
     required this.title,
     required this.showLessAction,
-    // required this.clearAllNotificationsAction,
-    // required this.clearAll,
     required this.notificationCount,
   }) : super(key: key);
 
