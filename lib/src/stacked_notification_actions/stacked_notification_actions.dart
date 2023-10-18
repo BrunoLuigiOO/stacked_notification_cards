@@ -41,12 +41,12 @@ class StackedNotificationActions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(child: title),
-          GestureDetector(
-            onTap: () {
-              controller.reverse();
-            },
-            child: Visibility(
-              visible: notificationCount > 1,
+          Visibility(
+            visible: notificationCount > 1 && opacity.value > 0.0,
+            child: InkWell(
+              onTap: () {
+                controller.reverse();
+              },
               child: Opacity(
                 opacity: opacity.value,
                 child: showLessAction,
