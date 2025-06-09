@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
             maxLines: 1,
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: kBlackColor.withOpacity(0.4),
+              color: kBlackColor.withAlpha(102),
             ),
           ),
           subtitle: Text(
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
             maxLines: 1,
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: kBlackColor.withOpacity(0.4),
+              color: kBlackColor.withAlpha(102),
             ),
           ),
           mainInfo: Row(
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(
               fontFamily: 'Roboto',
               fontWeight: FontWeight.bold,
-              color: kBlackColor.withOpacity(0.4),
+              color: kBlackColor.withAlpha(102),
             ),
           ),
           trailing: Padding(
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
             StackedNotificationCards(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.25),
+                  color: Colors.black.withAlpha(102),
                   blurRadius: 2.0,
                   offset: Offset(0, 2),
                 )
